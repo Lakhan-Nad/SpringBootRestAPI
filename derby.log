@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Wed Mar 31 15:20:28 IST 2021:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0178-87b1-00d5-000007905f68 
+on database directory memory:/home/lakhan/Desktop/samsung_prism/064e27e8-d96e-49fb-a5fe-bf649a8129ef with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@277050dc 
+Loaded from file:/home/lakhan/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Ubuntu
+java.runtime.version=11.0.10+9-Ubuntu-0ubuntu1.20.04
+user.dir=/home/lakhan/Desktop/samsung_prism
+os.name=Linux
+os.arch=amd64
+os.version=5.8.0-48-generic
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

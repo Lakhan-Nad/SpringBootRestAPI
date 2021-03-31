@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.samsung_prism.models.User;
-import com.example.samsung_prism.repository.UserRepository;
+import com.example.samsung_prism.models.Device;
+import com.example.samsung_prism.repository.DeviceRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,16 +20,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/users")
-class UserController {
+@RequestMapping("/devices")
+class DeviceController {
 
     @Autowired
-    UserRepository repository;
+    DeviceRepository repository;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAll() {
+    public ResponseEntity<List<Device>> getAll() {
         try {
-            List<User> items = new ArrayList<User>();
+            List<Device> items = new ArrayList<Device>();
 
             repository.findAll().forEach(items::add);
 
@@ -43,8 +43,8 @@ class UserController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<User> getById(@PathVariable("id") Long id) {
-        Optional<User> existingItemOptional = repository.findById(id);
+    public ResponseEntity<Device> getById(@PathVariable("id") Long id) {
+        Optional<Device> existingItemOptional = repository.findById(id);
 
         if (existingItemOptional.isPresent()) {
             return new ResponseEntity<>(existingItemOptional.get(), HttpStatus.OK);
@@ -54,9 +54,9 @@ class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> create(@RequestBody User item) {
+    public ResponseEntity<Device> create(@RequestBody Device item) {
         try {
-            User savedItem = repository.save(item);
+            Device savedItem = repository.save(item);
             return new ResponseEntity<>(savedItem, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.EXPECTATION_FAILED);
@@ -64,10 +64,10 @@ class UserController {
     }
 
     @PutMapping("{id}")
-    public ResponseEntity<User> update(@PathVariable("id") Long id, @RequestBody User item) {
-        Optional<User> existingItemOptional = repository.findById(id);
+    public ResponseEntity<Device> update(@PathVariable("id") Long id, @RequestBody Device item) {
+        Optional<Device> existingItemOptional = repository.findById(id);
         if (existingItemOptional.isPresent()) {
-            User existingItem = existingItemOptional.get();
+            Device existingItem = existingItemOptional.get();
             System.out.println("TODO for developer - update logic is unique to entity and must be implemented manually.");
             //existingItem.setSomeField(item.getSomeField());
             return new ResponseEntity<>(repository.save(existingItem), HttpStatus.OK);

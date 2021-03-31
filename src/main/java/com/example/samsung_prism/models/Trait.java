@@ -4,35 +4,35 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "users", schema = "samsung_prism")
-public class User {
+@Table(name = "traits", schema = "samsung_prism")
+public class Trait {
     @Id
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false)
+    @Column
     private String name;
 
-    @Column(unique = true, nullable = false, updatable = false)
-    private String email;
+    @Column
+    private String state;
 
-    public void setEmail(String email) {
-        this.email = email;
+    @ManyToOne(optional = false)
+    private Device device;
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getName() {
@@ -41,5 +41,9 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public String getState() {
+        return state;
     }
 }

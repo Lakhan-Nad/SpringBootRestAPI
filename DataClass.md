@@ -27,8 +27,9 @@
  - model_name
  - brand_name
 
-## Capabilities
+## Trait
  - id
+ - name
  - device_id
  - attribute
  - state
