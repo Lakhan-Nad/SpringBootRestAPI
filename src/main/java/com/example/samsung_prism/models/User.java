@@ -11,6 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 import javax.persistence.CascadeType;
 
@@ -27,6 +30,7 @@ public class User {
     @Column(unique = true, nullable = false, updatable = false)
     private String email;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "user_devices", joinColumns = { @JoinColumn(name = "user_id") }, inverseJoinColumns = {
             @JoinColumn(name = "location_id") })
@@ -44,6 +48,10 @@ public class User {
         this.name = name;
     }
 
+    public void setLocations(Set<Location> locations) {
+        this.locations = locations;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -54,5 +62,20 @@ public class User {
 
     public Long getId() {
         return id;
+    }
+
+    public Set<Location> getLocations() {
+        return locations;
+    }
+
+    public User(String name, String email) {
+        super();
+
+        this.name = name;
+        this.email = email;
+    }
+
+    public User() {
+        super();
     }
 }

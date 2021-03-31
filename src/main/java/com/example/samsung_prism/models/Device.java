@@ -4,12 +4,14 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "devices", schema = "samsung_prism")
@@ -30,9 +32,11 @@ public class Device {
     @Column
     private String brandName;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "room_id")
     private Room room;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "device")
     private List<Trait> traits;
 
@@ -56,6 +60,10 @@ public class Device {
         this.id = id;
     }
 
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     public String getLabel() {
         return label;
     }
@@ -74,5 +82,30 @@ public class Device {
 
     public Long getId() {
         return id;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public List<Trait> getTraits() {
+        return traits;
+    }
+
+    public void setTraits(List<Trait> traits) {
+        this.traits = traits;
+    }
+
+    public Device(String label, String type, String model, String brandName) {
+        super();
+
+        this.type = type;
+        this.brandName = brandName;
+        this.label = label;
+        this.model = model;
+    }
+
+    public Device() {
+        super();
     }
 }

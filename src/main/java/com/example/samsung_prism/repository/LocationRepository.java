@@ -7,5 +7,4 @@ import com.example.samsung_prism.models.Location;
 
 @Repository
 public interface LocationRepository extends JpaRepository<Location, Long> {
-    
 }

@@ -31,3 +31,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+### Test Files ###
+src/main/java/com/example/samsung_prism/data/*
+src/main/java/com/example/samsung_prism/Faker.java

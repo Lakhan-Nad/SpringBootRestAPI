@@ -2,9 +2,9 @@ package com.example.samsung_prism.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -21,7 +21,8 @@ public class Trait {
     @Column
     private String state;
 
-    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @ManyToOne
+    @JoinColumn(name = "device_id")
     private Device device;
 
     public void setName(String name) {
@@ -36,6 +37,10 @@ public class Trait {
         this.state = state;
     }
 
+    public void setDevice(Device device) {
+        this.device = device;
+    }
+
     public String getName() {
         return name;
     }
@@ -46,5 +51,20 @@ public class Trait {
 
     public String getState() {
         return state;
+    }
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public Trait(String name, String state) {
+        super();
+
+        this.name = name;
+        this.state = state;
+    }
+
+    public Trait() {
+        super();
     }
 }

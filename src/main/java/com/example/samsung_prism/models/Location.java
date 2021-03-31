@@ -14,6 +14,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.JoinColumn;
 
 @Entity
@@ -35,13 +38,15 @@ public class Location {
     @Column(precision = 3)
     private float latitude;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "location")
     private List<Room> rooms;
 
+    @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
     @JoinTable(name = "user_devices", joinColumns = { @JoinColumn(name = "location_id") }, inverseJoinColumns = {
             @JoinColumn(name = "user_id") })
-    private Set<User> locations = new HashSet<>();
+    private Set<User> users = new HashSet<>();
 
     public void setAddress(String address) {
         this.address = address;
@@ -81,5 +86,34 @@ public class Location {
 
     public Long getId() {
         return id;
+    }
+
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+    public List<Room> getRooms() {
+        return rooms;
+    }
+
+    public void setRooms(List<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public Location(String label, String address, float latitude, float longitude) {
+        super();
+
+        this.address = address;
+        this.label = label;
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+
+    public Location() {
+        super();
     }
 }
