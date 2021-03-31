@@ -1,10 +1,14 @@
 package com.example.samsung_prism.models;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -17,8 +21,11 @@ public class Room {
     @Column
     private String label;
 
-    @ManyToOne(optional = false)
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     private Location location;
+
+    @OneToMany(mappedBy = "room")
+    private List<Device> devices;
 
     public void setLabel(String label) {
         this.label = label;
