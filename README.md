@@ -8,6 +8,8 @@ by: Lakhan Lal Nad, Lishi Patel, P Rohit, Mayank Patel
 This is our project in which we would be hosting a RESTful API by using springboot and later get and post requests accordingly
 so as to facilitate search operation through Natural language command. 
 
+The endpoint for our query API= http://spring-boot-samsung-prism.herokuapp.com/query
+
 Dataset Capture / Preparation / Generation : 
 -- Location>Room>Device>Capabilities are entities of our dataset.
 --We are using our dummy dataset.
