@@ -1,10 +1,8 @@
 # SpringBootRestAPI- Samsung PRISM worklet-V146VIT
 
-by:
-Lakhan Lal Nad
-Lishi Patel
-P Rohit
-Mayank Patel
+by: Lakhan Lal Nad, Lishi Patel, P Rohit, Mayank Patel
+
+
 
 
 This is our project in which we would be hosting a RESTful API by using springboot and later get and post requests accordingly
